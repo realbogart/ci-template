@@ -11,6 +11,10 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Build
-        container: nixos/nix:2.23.0
-        run: nix build
+      - name: Run build in Nix container
+        run: |
+          docker run --rm \
+            -v ${{ github.workspace }}:/workspace \
+            -w /workspace \
+            nixos/nix:2.23.0 \
+            nix build
