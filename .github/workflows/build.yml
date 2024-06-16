@@ -21,7 +21,7 @@ jobs:
             nix --extra-experimental-features nix-command --extra-experimental-features flakes build
 
       - name: Verify result
-        run: ls -la result/bin/template
+        run: ls -la result/
 
       - name: Upload binary
         uses: actions/upload-artifact@v4
