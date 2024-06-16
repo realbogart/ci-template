@@ -38,9 +38,10 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: application-binary
-          path: ./template
+          path: ./binary
 
       - name: Run binary
         run: |
-          chmod +x template
-          ./template
+          ls -la binary
+          chmod +x ./binary/template
+          ./binary/template
