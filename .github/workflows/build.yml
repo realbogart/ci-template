@@ -43,5 +43,5 @@ jobs:
       - name: Run binary
         run: |
           ls -la binary
-          chmod +x ./binary/template
+          chmod +x binary/template
           ./binary/template
