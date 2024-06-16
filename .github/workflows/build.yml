@@ -26,6 +26,7 @@ jobs:
         with:
           name: application-binary
           path: ${{ github.workspace }}/template
+          retention-days: 1
 
   test:
     name: test
@@ -34,7 +35,7 @@ jobs:
 
     steps:
       - name: Download binary
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: application-binary
           path: ./binary
