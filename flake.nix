@@ -10,7 +10,7 @@
     flake-utils.lib.eachDefaultSystem (system:
       let
         pkgs = import nixpkgs { inherit system; };
-        dependencies = with pkgs; [ bash coreutils clang cmake ninja ];
+        dependencies = with pkgs; [ bash coreutils clang cmake ninja act ];
       in {
         packages.default = pkgs.stdenv.mkDerivation {
           name = "template";

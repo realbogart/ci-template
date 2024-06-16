@@ -24,10 +24,10 @@ jobs:
         run: echo "UPLOAD_PATH=$(readlink -f result)" >> $GITHUB_ENV
 
       - name: Verify result
-        run: ls -la ${{ env.UPLOAD_PATH }}
+        run: ls -la $PLOAD_PATH
 
       - name: Upload binary
         uses: actions/upload-artifact@v4
         with:
           name: application-binary
-          path: ${{ env.UPLOAD_PATH }}/bin/template
+          path: $UPLOAD_PATH/bin/template
