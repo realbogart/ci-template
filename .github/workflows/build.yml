@@ -40,8 +40,12 @@ jobs:
           name: application-binary
           path: ./binary
 
-      - name: Run binary
+      - name: Verify and set permissions
         run: |
-          ls -la binary
-          chmod +x binary/template
-          ./binary/template
+          ls -la ./binary
+          file ./binary/template
+          chmod +x ./binary/template
+          ls -la ./binary
+
+      - name: Run binary
+        run: ./binary/template
