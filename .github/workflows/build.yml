@@ -19,7 +19,9 @@ jobs:
           run: |
             git config --global --add safe.directory /workspace
             nix --extra-experimental-features nix-command --extra-experimental-features flakes build -L --show-trace
-            echo "UPLOAD_PATH=$(readlink -f result)" >> $GITHUB_ENV
+
+      - name: Dereference symlink
+        run: echo "UPLOAD_PATH=$(readlink -f result)" >> $GITHUB_ENV
 
       - name: Verify result
         run: ls -la ${{ env.UPLOAD_PATH }}
