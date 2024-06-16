@@ -17,7 +17,7 @@ jobs:
           image: docker://nixos/nix:2.23.0
           options: -v ${{ github.workspace }}:/workspace -w /workspace
           run: |
-            nix --extra-experimental-features nix-command --extra-experimental-features flakes build
+            /bin/sh -c "nix --extra-experimental-features nix-command --extra-experimental-features flakes build"
 
       - name: Verify result
         run: ls -la result
