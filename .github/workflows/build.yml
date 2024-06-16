@@ -15,19 +15,14 @@ jobs:
         uses: addnab/docker-run-action@v3
         with:
           image: nixos/nix:2.23.0
-          options: -v ${{ github.workspace }}:/workspace -w /workspace
+          options: -v ${{ github.workspace }}:/workspace -v tmp-nix-store:/nix/store -w /workspace
           run: |
             git config --global --add safe.directory /workspace
             nix --extra-experimental-features nix-command --extra-experimental-features flakes build -L --show-trace
-
-      - name: Dereference symlink
-        run: echo "UPLOAD_PATH=$(readlink -f result)" >> $GITHUB_ENV
-
-      - name: Verify result
-        run: ls -la $UPLOAD_PATH
+            cp -r result/bin/template /workspace
 
       - name: Upload binary
         uses: actions/upload-artifact@v4
         with:
           name: application-binary
-          path: $UPLOAD_PATH/bin/template
+          path: ${{ github.workspace }}/template
