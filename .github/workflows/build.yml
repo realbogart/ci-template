@@ -18,10 +18,10 @@ jobs:
           options: -v ${{ github.workspace }}:/workspace -w /workspace
           run: |
             git config --global --add safe.directory /workspace
-            nix --extra-experimental-features nix-command --extra-experimental-features flakes build
+            nix --extra-experimental-features nix-command --extra-experimental-features flakes build -L --show-trace
 
       - name: Verify result
-        run: ls -la result/
+        run: ls -la result
 
       - name: Upload binary
         uses: actions/upload-artifact@v4
