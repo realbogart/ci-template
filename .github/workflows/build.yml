@@ -12,7 +12,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Run build in Nix container
-        uses: 
+        uses: addnab/docker-run-action@v3
         with:
           image: docker://nixos/nix:2.23.0
           options: -v ${{ github.workspace }}:/workspace -w /workspace
