@@ -26,3 +26,20 @@ jobs:
         with:
           name: application-binary
           path: ${{ github.workspace }}/template
+
+  test:
+    name: test
+    runs-on: ubuntu-latest
+    needs: build
+
+    steps:
+      - name: Download binary
+        uses: actions/download-artifact@v3
+        with:
+          name: application-binary
+          path: ./binary
+
+      - name: Run binary
+        run: |
+          chmod +x ./binary/template
+          ./binary/template
