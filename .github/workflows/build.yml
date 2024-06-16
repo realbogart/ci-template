@@ -17,4 +17,4 @@ jobs:
             -v ${{ github.workspace }}:/workspace \
             -w /workspace \
             nixos/nix:2.23.0 \
-            nix --extra-experimental-features nix-command --extra-experimental-features flakes build
+            sh -c "chown -R 1000:1000 /workspace && nix --extra-experimental-features nix-command --extra-experimental-features flakes build"
