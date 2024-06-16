@@ -12,11 +12,12 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Run build in Nix container
-        uses: docker://nixos/nix:2.23.0
-        with: |
-          -v ${{ github.workspace }}:/workspace
-          -w /workspace
-          /bin/sh -c "nix --extra-experimental-features nix-command --extra-experimental-features flakes build"
+        uses: 
+        with:
+          image: docker://nixos/nix:2.23.0
+          options: -v ${{ github.workspace }}:/workspace -w /workspace
+          run: |
+            nix --extra-experimental-features nix-command --extra-experimental-features flakes build
 
       - name: Verify result
         run: ls -la result
