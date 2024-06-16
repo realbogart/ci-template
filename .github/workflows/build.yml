@@ -17,4 +17,4 @@ jobs:
             -v ${{ github.workspace }}:/workspace \
             -w /workspace \
             nixos/nix:2.23.0 \
-            nix build
+            nix --extra-experimental-features nix-command --extra-experimental-features flakes build
