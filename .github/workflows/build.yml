@@ -48,4 +48,4 @@ jobs:
           ls -la ./binary
 
       - name: Run binary
-        run: ./binary/template
+        run: binary/template
