@@ -6,6 +6,7 @@ jobs:
   build:
     name: build the application
     runs-on: ubuntu-latest
+    container: nixos/nix:2.23.0
 
     steps:
       - name: Checkout code
