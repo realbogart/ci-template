@@ -14,10 +14,10 @@ jobs:
       - name: Run build in Nix container
         uses: addnab/docker-run-action@v3
         with:
-          image: docker://nixos/nix:2.23.0
+          image: nixos/nix:2.23.0
           options: -v ${{ github.workspace }}:/workspace -w /workspace
           run: |
-            /bin/sh -c "nix --extra-experimental-features nix-command --extra-experimental-features flakes build"
+            nix --extra-experimental-features nix-command --extra-experimental-features flakes build
 
       - name: Verify result
         run: ls -la result
