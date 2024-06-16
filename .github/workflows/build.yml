@@ -24,7 +24,7 @@ jobs:
         run: echo "UPLOAD_PATH=$(readlink -f result)" >> $GITHUB_ENV
 
       - name: Verify result
-        run: ls -la $PLOAD_PATH
+        run: ls -la $UPLOAD_PATH
 
       - name: Upload binary
         uses: actions/upload-artifact@v4
